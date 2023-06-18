@@ -1,6 +1,8 @@
 package edu.miu.swa.presentationservice.service;
 
-import java.io.FileWriter;
+import org.springframework.stereotype.Service;
+
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -13,6 +15,8 @@ import java.time.format.DateTimeFormatter;
  * Jun 18 2023
  * 00:33
  */
+
+@Service
 public class CsvWriter {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -39,5 +43,4 @@ public class CsvWriter {
             System.out.println("An error occurred while writing to the CSV file: " + e.getMessage());
         }
     }
-}
 }

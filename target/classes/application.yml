@@ -1,2 +1,32 @@
 server:
-  port: 8090
+  port: 8200
+
+app:
+  ably-key: ${ABLY_KEY:}
+  ably-channel: ${ABLY_CHANNEL:}
+  ably-channel-filter: ${ABLY_CHANNEL_FILTER:}
+  ably-kafka-topic: ${ABLY_KAFKA_TOPIC:}
+  ably-ripped-kafka-topics: ${ABLY_STRIPPED_KAFKA_TOPICS:}
+  kafka-producer-password: ${KAFKA_PRODUCER_PASSWORD:}
+  kafka-producer-username: ${KAFKA_PRODUCER_USERNAME:}
+
+# Kafka Configuration
+spring:
+  kafka:
+    bootstrap-servers: proven-lobster-11255-us1-kafka.upstash.io:9092
+    properties:
+      security.protocol: SASL_SSL
+      sasl.mechanism: SCRAM-SHA-256
+      sasl.jaas.config: org.apache.kafka.common.security.scram.ScramLoginModule required username="${app.kafka-producer-username}" password="${app.kafka-producer-password}";
+
+  # Kafka Producer Configuration
+    producer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+  # Kafka Consumer Configuration
+    consumer:
+      group-id: ps-consumer
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: earliest

@@ -66,3 +66,6 @@ build/tmp/bootWar/MANIFEST.MF
 build/*
 /build/*
 .run
+
+
+*.csv
