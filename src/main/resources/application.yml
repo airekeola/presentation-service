@@ -13,7 +13,7 @@ app:
 # Kafka Configuration
 spring:
   kafka:
-    bootstrap-servers: proven-lobster-11255-us1-kafka.upstash.io:9092
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER:}
     properties:
       security.protocol: SASL_SSL
       sasl.mechanism: SCRAM-SHA-256
