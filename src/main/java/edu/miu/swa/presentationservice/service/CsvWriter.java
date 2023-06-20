@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * @author bazz
+ * @author bazz, chunkingz
  * Jun 18 2023
  * 00:33
  */
@@ -27,15 +27,15 @@ public class CsvWriter {
 
 
         try {
-
-            boolean fileExists = Files.exists(Path.of(csv));
+            Path path = Path.of(csv);
+            boolean fileExists = Files.exists(path);
 
             if (!fileExists) {
-                Files.writeString(Path.of(csv), String.join(",", HEADERS) + "\n");
+                Files.writeString(path, String.join(",", HEADERS) + "\n");
             }
 
             String row = now.format(FORMATTER) + "," + data + "\n";
-            Files.writeString(Path.of(csv), row, StandardOpenOption.APPEND);
+            Files.writeString(path, row, StandardOpenOption.APPEND);
 
 
             System.out.println("Data has been written to " + csv);
