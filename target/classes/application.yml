@@ -6,13 +6,15 @@ app:
   ably-channel: ${ABLY_CHANNEL:}
   ably-channel-filter: ${ABLY_CHANNEL_FILTER:}
   ably-kafka-topic: ${ABLY_KAFKA_TOPIC:}
-  ably-ripped-kafka-topics: ${ABLY_STRIPPED_KAFKA_TOPICS:}
+  ably-ripped-kafka-topics: ${ABLY_STRIPPED_KAFKA_TOPICS:DS_size,DS_buy_child_order_acceptance_id,DS_sell_child_order_acceptance_id,DS_price,DS_exec_date}
   kafka-producer-password: ${KAFKA_PRODUCER_PASSWORD:}
   kafka-producer-username: ${KAFKA_PRODUCER_USERNAME:}
 
 spring:
   application:
     name: Presentation Service
+  config:
+    import: configserver:http://localhost:8888/
 
   # Kafka Configuration
   kafka:

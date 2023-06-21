@@ -21,7 +21,7 @@ public class KafkaMessageListener {
 
     private final CsvWriter csvWriter;
 
-    @KafkaListener(topics = "#{T(java.util.Arrays).asList('${ably-ripped-kafka-topics}')}", groupId = "ps")
+    @KafkaListener(topics = "#{T(java.util.Arrays).asList('${app.ably-ripped-kafka-topics}')}", groupId = "ps")
     public void listen(@Payload String message,
                        @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
         System.out.println("Received message from topic " + topic + ": " + message);
