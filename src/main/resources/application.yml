@@ -13,10 +13,12 @@ app:
 spring:
   application:
     name: Presentation Service
+  config:
+    import: configserver:http://localhost:8888/
 
   # Kafka Configuration
   kafka:
-    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER:renewing-woodcock-12123-us1-kafka.upstash.io:9092}
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER:}
     properties:
       security.protocol: SASL_SSL
       sasl.mechanism: SCRAM-SHA-256
